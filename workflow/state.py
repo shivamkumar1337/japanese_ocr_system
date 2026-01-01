@@ -17,8 +17,10 @@ class ProcessingState(TypedDict, total=False):
     tokens: List[Any]
     
     # LLM outputs
+    vocabulary: Dict[str, str]
     translation: str
     grammar_patterns: List[str]
+    sentence_breakdown: List[str]
     
     # Visualization outputs
     annotations: List[Any]
