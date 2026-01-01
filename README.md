@@ -1,4 +1,4 @@
-# 🇯🇵 Japanese Text Processing System - Production
+# 🇯🇵 Japanese Text Processing System
 
 A multi-agent system for processing Japanese text images with OCR, NLP analysis, dictionary lookup, LLM-powered grammar analysis, and visual annotation.
 
