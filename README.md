@@ -95,7 +95,7 @@ tesseract --list-langs | grep jpn
 ### Step 1: Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/japanese-ocr-system.git
+git clone https://github.com/shivamkumar1337/japanese_ocr_system
 cd japanese-ocr-system
 ```
 
