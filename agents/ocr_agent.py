@@ -48,13 +48,23 @@ class OCRAgent:
             config='--psm 6 --oem 3'
         )
         
-        # Extract text elements with confidence filtering
+        # Extract text elements - lower threshold to catch more
         elements = []
+        prev_text = None
+        prev_y = None
+        
         for i in range(len(data["text"])):
             text = data["text"][i].strip()
             conf = float(data["conf"][i])
             
-            if text and conf > 30:
+            # Lower threshold to catch all kanji
+            if text and conf > 20:
+                current_y = data["top"][i]
+                
+                # Skip if same text appears consecutively on the same line
+                if prev_text == text and prev_y is not None and abs(current_y - prev_y) < 15:
+                    continue
+                
                 elements.append({
                     "text": text,
                     "x": data["left"][i],
@@ -63,11 +73,14 @@ class OCRAgent:
                     "h": data["height"][i],
                     "conf": conf
                 })
+                
+                prev_text = text
+                prev_y = current_y
         
         # Group elements into lines based on vertical position
         lines = self._group_into_lines(elements)
         
-        # Combine all text
+        # Combine all text maintaining original order
         full_text = " ".join([elem["text"] for elem in elements])
         
         print(f"[{self.name}] Extracted {len(elements)} text elements in {len(lines)} lines")

@@ -24,7 +24,8 @@ class ProcessingState(TypedDict, total=False):
     
     # Visualization outputs
     annotations: List[Any]
-    annotated_image_path: str
+    annotated_image_readings_path: str
+    annotated_image_meanings_path: str
     
     # Metadata
     processing_time: str

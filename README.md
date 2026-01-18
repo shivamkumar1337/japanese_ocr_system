@@ -7,7 +7,7 @@ A multi-agent system for processing Japanese text images with OCR, NLP analysis,
 - 🔍 **OCR Text Extraction**: High-accuracy Japanese text extraction using Tesseract
 - 📚 **Dictionary Integration**: JMdict-based vocabulary lookup with comprehensive meanings
 - 🤖 **LLM Analysis**: Groq-powered grammar pattern explanations and natural translation
-- 🎨 **Visual Annotation**: Furigana (hiragana readings) and English meanings overlaid on images
+- 🎨 **Visual Annotation**: Furigana (hiragana readings) overlaid on images
 - 🔄 **LangGraph Orchestration**: Modern workflow management with state machines
 - 🏗️ **Modular Architecture**: Independent, replaceable agent components
 
@@ -23,34 +23,7 @@ Image Upload → OCR Agent → NLP Agent → LLM Agent → Visualization Agent �
 - **Vocabulary**: Kanji words with hiragana, katakana, romaji, and English meanings
 - **Grammar Analysis**: Detailed explanations of particles, verb forms, and sentence patterns
 - **Translation**: Natural English translation of the entire text
-- **Annotated Image**: Original image with furigana above and meanings below kanji
-
-## 🏗️ Architecture
-
-### Multi-Agent System
-
-```
-┌─────────────────────────────────────────────────────────┐
-│                    FastAPI Application                   │
-└───────────────────────┬─────────────────────────────────┘
-                        │
-                        ▼
-┌─────────────────────────────────────────────────────────┐
-│           LangGraph Workflow Orchestrator                │
-│  (State Machine with Sequential Node Execution)         │
-└───────────────────────┬─────────────────────────────────┘
-                        │
-        ┌───────────────┼───────────────┬─────────────┐
-        │               │               │             │
-        ▼               ▼               ▼             ▼
-┌──────────────┐ ┌──────────────┐ ┌──────────┐ ┌──────────────┐
-│  OCR Agent   │ │  NLP Agent   │ │ LLM Agent│ │ Viz Agent    │
-│              │ │              │ │          │ │              │
-│ Tesseract    │ │ nagisa       │ │ Groq API │ │ PIL/CV2      │
-│ Text Extract │ │ pykakasi     │ │ Grammar  │ │ Furigana     │
-│ Bounding Box │ │ JMdict       │ │ Translate│ │ Meanings     │
-└──────────────┘ └──────────────┘ └──────────┘ └──────────────┘
-```
+- **Annotated Image**: Original image with furigana above
 
 ### Agent Responsibilities
 
